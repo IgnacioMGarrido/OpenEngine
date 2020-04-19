@@ -63,12 +63,7 @@ int main()
 	    glEnable(GL_DEPTH_TEST);
 	    glEnable(GL_SCISSOR_TEST);
 
-	    
-	    //load Shaders
-	    //Shader* myShader = new Shader("data/vertex.glsl", "data/fragment.glsl");
-	    //myShader->use();
 		std::shared_ptr<Shader> myShader = std::make_shared<Shader>("data/vertex.glsl", "data/fragment.glsl");
-		myShader->use();
 
 		std::shared_ptr<Texture> mytexture = Texture::load("data/front.png");
 		Material* myMaterial = new Material(mytexture, myShader);
@@ -79,7 +74,7 @@ int main()
 	    const glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 
 		    static_cast<float>(SCREEN_WIDTH) / static_cast<float>(SCREEN_HEIGHT),
 		    1, 1000);
-		const glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+		const glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
 
 
@@ -105,7 +100,7 @@ int main()
 		        {
 					myMesh->translate(glm::vec3(x, 0, z));
 					myMesh->rotate(32.f * accumulated, glm::vec3(0, 1, 0));
-					myMesh->updateUniforms(*myShader.get(), proj, view);
+					myMesh->updateUniforms(*myShader, proj, view);
 					myMesh->draw(myShader);
 				}
 		    }

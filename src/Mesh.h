@@ -37,6 +37,7 @@ public:
     inline glm::vec3 getPosition() const { return m_transform.getPosition(); };
     inline glm::vec3 getRotation() const { return m_transform.getRotation(); };
     inline glm::vec3 getScale() const { return m_transform.getScale(); };
+
     inline const Material& getMaterial() const { return *m_material; };
     inline Material& getMaterial() { return *m_material; };
 

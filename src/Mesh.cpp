@@ -55,7 +55,7 @@ void Mesh::scale(glm::vec3 _scale)
 
 void Mesh::updateModelMatrix()
 {
-   m_modelMatrix = glm::translate(glm::mat4(), m_transform.getPosition());
+   m_modelMatrix = glm::translate(glm::mat4(1.f), m_transform.getPosition());
    m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(m_transform.getRotation().x), glm::vec3(1, 0, 0));
    m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(m_transform.getRotation().y), glm::vec3(0, 1, 0));
    m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(m_transform.getRotation().z), glm::vec3(0, 0, 1));
