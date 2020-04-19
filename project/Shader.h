@@ -20,6 +20,7 @@ private:
     GLuint m_uFragmentID;
     GLuint m_iPosLoc;
     GLuint m_iColorLoc;
+    GLuint m_iTexCoordLoc;
 
 public:
     Shader(const char* _vertexLocation, const char* _fragmentLocation);
@@ -30,6 +31,7 @@ public:
 
     void setInt(int _loc, int _val);
     void setFloat(int _loc, float _val);
+    void setVec2(int _loc, const glm::vec2& _vec);
     void setVec3(int _loc, const glm::vec3& _vec);
     void setVec4(int _loc, const glm::vec4& _vec);
     void setMatrix(int _loc, const glm::mat4& _matrix);

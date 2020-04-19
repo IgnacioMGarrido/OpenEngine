@@ -1,7 +1,10 @@
 #ifdef _MSC_VER
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #endif
+#define STB_IMAGE_IMPLEMENTATION
 
+
+#include "../lib/stb_image.h"
 #include "GL/glew.h"
 #include "../lib/glfw/glfw3.h"
 #include <iostream>
@@ -11,6 +14,8 @@
 #include <../glm/ext.hpp>
 #include "Mesh.h"
 #include "Primitives.h"
+#include "Texture.h"
+#include "Material.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -60,20 +65,16 @@ int main()
 
 	    
 	    //load Shaders
-	    Shader* myShader = new Shader("data/vertex.glsl", "data/fragment.glsl");
-	    myShader->use();
+	    //Shader* myShader = new Shader("data/vertex.glsl", "data/fragment.glsl");
+	    //myShader->use();
+		std::shared_ptr<Shader> myShader = std::make_shared<Shader>("data/vertex.glsl", "data/fragment.glsl");
+		myShader->use();
 
-	    std::vector<Vertex> vertices;
-	    vertices.emplace_back(Vertex(glm::vec3(0, 0.5f, 0), glm::vec3(1, 0, 0)));
-	    vertices.emplace_back(Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec3(0, 1, 0)));
-	    vertices.emplace_back(Vertex(glm::vec3(0.5f, -0.5f, 0), glm::vec3(0, 0, 1)));
-
-	    std::vector<uint16_t> indices {0,1,2};
-
+		std::shared_ptr<Texture> mytexture = Texture::load("data/front.png");
+		Material* myMaterial = new Material(mytexture, myShader);
 		Primitive t = Cube();
 		Transform myTransform = Transform();
-		Mesh* myMesh = new Mesh(t, myTransform);
-	    //Buffer* myBuffer = new Buffer(vertices, indices);
+		Mesh* myMesh = new Mesh(t, myTransform, myMaterial);
 
 	    const glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 
 		    static_cast<float>(SCREEN_WIDTH) / static_cast<float>(SCREEN_HEIGHT),
@@ -104,8 +105,8 @@ int main()
 		        {
 					myMesh->translate(glm::vec3(x, 0, z));
 					myMesh->rotate(32.f * accumulated, glm::vec3(0, 1, 0));
-					myMesh->updateUniforms(*myShader, proj, view);
-					myMesh->draw(*myShader);
+					myMesh->updateUniforms(*myShader.get(), proj, view);
+					myMesh->draw(myShader);
 				}
 		    }
 		    // refresh screen
@@ -114,7 +115,6 @@ int main()
 	    }
 
 		delete myMesh;
-		delete myShader;
 	    // shutdown
 	    glfwTerminate();
 	}
