@@ -1,7 +1,10 @@
 #ifdef _MSC_VER
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #endif
+#define STB_IMAGE_IMPLEMENTATION
 
+
+#include "../lib/stb_image.h"
 #include "GL/glew.h"
 #include "../lib/glfw/glfw3.h"
 #include <iostream>
@@ -11,6 +14,7 @@
 #include <../glm/ext.hpp>
 #include "Mesh.h"
 #include "Primitives.h"
+#include "Texture.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -63,13 +67,8 @@ int main()
 	    Shader* myShader = new Shader("data/vertex.glsl", "data/fragment.glsl");
 	    myShader->use();
 
-	    std::vector<Vertex> vertices;
-	    vertices.emplace_back(Vertex(glm::vec3(0, 0.5f, 0), glm::vec3(1, 0, 0)));
-	    vertices.emplace_back(Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec3(0, 1, 0)));
-	    vertices.emplace_back(Vertex(glm::vec3(0.5f, -0.5f, 0), glm::vec3(0, 0, 1)));
 
-	    std::vector<uint16_t> indices {0,1,2};
-
+		std::shared_ptr<Texture> mytexture = Texture::load("data/front.png");
 		Primitive t = Cube();
 		Transform myTransform = Transform();
 		Mesh* myMesh = new Mesh(t, myTransform);
