@@ -33,6 +33,7 @@ public:
     void rotate(float _degrees, glm::vec3 _axis);
     void scale(glm::vec3 _scale);
 
+    void updateUniforms(Shader& _shader, glm::mat4 _projection, glm::mat4 _view);
     //Accessors
     inline glm::mat4& getModelMatrix() { return m_modelMatrix; };
 private:

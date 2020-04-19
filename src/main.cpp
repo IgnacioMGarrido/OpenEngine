@@ -100,7 +100,7 @@ int main()
 		        {
 					myMesh->translate(glm::vec3(x, 0, z));
 					myMesh->rotate(32.f * accumulated, glm::vec3(0, 1, 0));
-					myShader->setMatrix(myShader->getLocation("mvp"), proj * view * myMesh->getModelMatrix());
+					myMesh->updateUniforms(*myShader, proj, view);
 					myMesh->draw(*myShader);
 				}
 		    }
