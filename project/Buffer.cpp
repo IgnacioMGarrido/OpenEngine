@@ -30,6 +30,8 @@ void Buffer::draw(const Shader& _shader) const
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ids[1]);
 
     _shader.setupAttributes();
-
-    glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_SHORT, nullptr);
+    if (m_indices.size() > 0)
+        glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_SHORT, nullptr);
+    else
+        glDrawArrays(GL_TRIANGLES, 0, m_vertices.size());
 }

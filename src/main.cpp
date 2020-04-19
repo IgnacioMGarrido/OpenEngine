@@ -70,7 +70,7 @@ int main()
 
 	    std::vector<uint16_t> indices {0,1,2};
 
-		Primitive t = Triangle();
+		Cube t = Cube();
 		Mesh* myMesh = new Mesh(t);
 	    //Buffer* myBuffer = new Buffer(vertices, indices);
 

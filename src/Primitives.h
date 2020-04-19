@@ -56,111 +56,111 @@ public:
 		{
 			0, 1, 2	//Triangle 1
 		};
-		unsigned nrOfIndices = 3;//sizeof(indices) / sizeof(uint32_t);
+		unsigned int nrOfIndices = 3;//sizeof(indices) / sizeof(uint32_t);
 
 		this->set(vertices, nrOfVertices, indices, nrOfIndices);
 	}
 };
 
-//class Quad : public Primitive
-//{
-//public:
-//	Quad()
-//		: Primitive()
-//	{
-//		Vertex vertices[] =
-//		{
-//			//Position								//Color							//Texcoords					//Normals
-//			glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(0.5f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)
-//		};
-//		unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
-//
-//		GLuint indices[] =
-//		{
-//			0, 1, 2,	//Triangle 1
-//			0, 2, 3		//Triangle 2
-//		};
-//		unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
-//
-//		this->set(vertices, nrOfVertices, indices, nrOfIndices);
-//	}
-//};
-//
-//class Pyramid : public Primitive
-//{
-//public:
-//	Pyramid()
-//		: Primitive()
-//	{
-//		Vertex vertices[] =
-//		{
-//			//Position								//Color							//Texcoords					//Normals
-//			//Triangle front
-//			glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-//
-//			//Triangle left
-//			glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f),		glm::vec3(-1.f, 0.f, 0.f),
-//			glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f),		glm::vec3(-1.f, 0.f, 0.f),
-//			glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(-1.f, 0.f, 0.f),
-//
-//			//Triangle back
-//			glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f),		glm::vec3(0.f, 0.f, -1.f),
-//			glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
-//			glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
-//
-//			//Triangles right
-//			glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f),		glm::vec3(1.f, 0.f, 0.f),
-//			glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f),		glm::vec3(1.f, 0.f, 0.f),
-//			glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(1.f, 0.f, 0.f),
-//		};
-//		unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
-//
-//		this->set(vertices, nrOfVertices, nullptr, 0);
-//	}
-//};
-//
-//class Cube : public Primitive
-//{
-//public:
-//	Cube()
-//		: Primitive()
-//	{
-//		Vertex vertices[] =
-//		{
-//			//Position								//Color							//Texcoords					//Normals
-//			glm::vec3(-0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
-//			glm::vec3(0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
-//
-//			glm::vec3(0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, -1.f),
-//			glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
-//			glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
-//			glm::vec3(-0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, -1.f)
-//		};
-//		unsigned nrOfVertices = sizeof(vertices) / sizeof(Vertex);
-//
-//		GLuint indices[] =
-//		{
-//			0, 1, 2,
-//			0, 2, 3,
-//
-//			7, 6, 1,
-//			7, 1, 0,
-//
-//			4, 5, 6,
-//			4, 6, 7,
-//
-//			3, 2, 5,
-//			3, 5, 4
-//		};
-//		unsigned nrOfIndices = sizeof(indices) / sizeof(GLuint);
-//
-//		this->set(vertices, nrOfVertices, indices, nrOfIndices);
-//	}
-//};
+class Quad : public Primitive
+{
+public:
+	Quad()
+		: Primitive()
+	{
+		Vertex vertices[] =
+		{
+			//Position								//Color							//Texcoords					//Normals
+			Vertex(glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f)),//		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f))//,		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f))
+		};
+		unsigned nrOfVertices = 4;
+
+		uint16_t indices[] =
+		{
+			0, 1, 2,	//Triangle 1
+			0, 2, 3		//Triangle 2
+		};
+		unsigned int nrOfIndices = 6;
+
+		this->set(vertices, nrOfVertices, indices, nrOfIndices);
+	}
+};
+
+class Pyramid : public Primitive
+{
+public:
+	Pyramid()
+		: Primitive()
+	{
+		Vertex vertices[] =
+		{
+			//Position								//Color							//Texcoords					//Normals
+			//Triangle front
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f)),//		glm::vec2(0.5f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+
+			//Triangle left
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f)),//		glm::vec2(0.5f, 1.f),		glm::vec3(-1.f, 0.f, 0.f),
+			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(-1.f, 0.f, 0.f),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(1.f, 0.f),		glm::vec3(-1.f, 0.f, 0.f),
+
+			//Triangle back
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f)),//		glm::vec2(0.5f, 1.f),		glm::vec3(0.f, 0.f, -1.f),
+			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
+			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
+
+			//Triangles right
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f)),//		glm::vec2(0.5f, 1.f),		glm::vec3(1.f, 0.f, 0.f),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(1.f, 0.f, 0.f),
+			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f))//,		glm::vec2(1.f, 0.f),		glm::vec3(1.f, 0.f, 0.f),
+		};
+		unsigned int nrOfVertices = 12;
+
+		this->set(vertices, nrOfVertices, nullptr, 0);
+	}
+};
+
+class Cube : public Primitive
+{
+public:
+	Cube()
+		: Primitive()
+	{
+		Vertex vertices[] =
+		{
+			//Position								//Color							//Texcoords					//Normals
+			Vertex(glm::vec3(-0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 0.f, 0.f)),//		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 1.f, 0.f)),//		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f),
+
+			Vertex(glm::vec3(0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 0.f, 0.f)),//		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, -1.f),
+			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 1.f, 0.f)),//		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
+			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f)),//		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, -1.f),
+			Vertex(glm::vec3(-0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 1.f, 0.f)),//		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, -1.f)
+		};
+		unsigned nrOfVertices = 8;//sizeof(vertices) / sizeof(Vertex);
+
+		uint16_t indices[] =
+		{
+			0, 1, 2,
+			0, 2, 3,
+
+			7, 6, 1,
+			7, 1, 0,
+
+			4, 5, 6,
+			4, 6, 7,
+
+			3, 2, 5,
+			3, 5, 4
+		};
+		unsigned int nrOfIndices = 24;//sizeof(indices) / sizeof(GLuint);
+
+		this->set(vertices, nrOfVertices, indices, nrOfIndices);
+	}
+};
