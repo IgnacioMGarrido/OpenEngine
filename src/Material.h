@@ -11,7 +11,7 @@ private:
     std::shared_ptr<Shader> m_shader;
 
 public:
-    Material(const std::shared_ptr<Texture>& tex = nullptr,const std::shared_ptr<Shader>& shader = nullptr);
+    Material(const std::shared_ptr<Texture> tex = nullptr,const std::shared_ptr<Shader> shader = nullptr);
 
     void prepare();
 

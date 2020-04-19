@@ -24,12 +24,12 @@ Buffer::~Buffer()
 
 }
 
-void Buffer::draw(const Shader& _shader) const
+void Buffer::draw(std::shared_ptr<Shader> _shader) const
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_ids[0]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ids[1]);
 
-    _shader.setupAttributes();
+    _shader->setupAttributes();
     if (m_indices.size() > 0)
         glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_SHORT, nullptr);
     else

@@ -65,6 +65,7 @@ Shader::Shader(const char* _vertexLocation, const char* _fragmentLocation)
 
     m_iPosLoc = glGetAttribLocation(m_uProgramID, "vpos");
     m_iColorLoc = glGetAttribLocation(m_uProgramID, "vcolor");
+    m_iTexCoordLoc = glGetAttribLocation(m_uProgramID, "vtex");
 
     glDeleteShader(m_uVertexID);
     glDeleteShader(m_uFragmentID);
@@ -100,6 +101,12 @@ void Shader::setupAttributes() const
         glVertexAttribPointer(m_iColorLoc, 3, GL_FLOAT, false, sizeof(Vertex), reinterpret_cast<const void*>(offsetof(Vertex, m_vertexColor)));
     }
 
+    if (m_iTexCoordLoc != -1)
+    {
+        glEnableVertexAttribArray(m_iTexCoordLoc);
+        glVertexAttribPointer(m_iTexCoordLoc, 2, GL_FLOAT, false, sizeof(Vertex), reinterpret_cast<const void*>(offsetof(Vertex, m_texCoords)));
+    }
+
 }
 
 void Shader::setInt(int _loc, int _val)
@@ -115,6 +122,14 @@ void Shader::setFloat(int _loc, float _val)
     if (_loc != -1)
     {
         glUniform1f(_loc, _val);
+    }
+}
+
+void Shader::setVec2(int _loc, const glm::vec2& _vec)
+{
+    if(_loc != -1)
+    {
+        glUniform2f(_loc, _vec.x, _vec.y);
     }
 }
 

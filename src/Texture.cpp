@@ -2,6 +2,12 @@
 #include "../lib/stb_image.h"
 #include "GL/glew.h"
 
+Texture::Texture()
+    : m_id(0)
+    , m_size(glm::ivec2(0))
+{
+}
+
 std::shared_ptr<Texture> Texture::load(const char* filename)
 {
     std::shared_ptr<Texture> texture = std::make_shared<Texture>();
@@ -33,8 +39,4 @@ void Texture::bind()
     glBindTexture(GL_TEXTURE_2D, m_id);
 }
 
-Texture::Texture()
-    : m_id(0)
-    , m_size(glm::ivec2(0))
-{
-}
+

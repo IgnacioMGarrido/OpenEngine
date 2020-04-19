@@ -2,12 +2,12 @@
 #include "../project/Buffer.h"
 #include "../project/Shader.h"
 #include "Primitives.h"
-#include "../project/Vertex.h"
+#include "Material.h"
 
-Mesh::Mesh(Primitive& _primitive, const Transform& _transform)
+Mesh::Mesh(Primitive& _primitive, const Transform& _transform, Material* _material)
     : m_transform(_transform)
+    , m_material(_material)
 {
-
     for (int i = 0; i < _primitive.getNrOfVertices(); ++i)
     {
         m_vertices.push_back(_primitive.getVertices()[i]);
@@ -29,8 +29,9 @@ Mesh::~Mesh()
     //delete m_vertices;
 }
 
-void Mesh::draw(const Shader& _shader) const
+void Mesh::draw(std::shared_ptr<Shader> _shader) const
 {
+    m_material->prepare();
     m_Buffer->draw(_shader);
 }
 
