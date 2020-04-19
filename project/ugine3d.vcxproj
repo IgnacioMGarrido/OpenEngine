@@ -141,6 +141,7 @@
     <ClInclude Include="..\lib\glfw\glfw3native.h" />
     <ClInclude Include="..\src\Mesh.h" />
     <ClInclude Include="..\src\Primitives.h" />
+    <ClInclude Include="..\src\Transform.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Vertex.h" />
@@ -149,6 +150,7 @@
     <ClCompile Include="..\lib\glew\glew.c" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\Mesh.cpp" />
+    <ClCompile Include="..\src\Transform.cpp" />
     <ClCompile Include="Buffer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Vertex.cpp" />

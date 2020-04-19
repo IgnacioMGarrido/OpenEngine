@@ -60,6 +60,9 @@
     <ClInclude Include="..\src\Primitives.h">
       <Filter>Header Files\Graphics\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Transform.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -78,6 +81,9 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Mesh.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Transform.cpp">
       <Filter>Source Files\Graphics\Mesh</Filter>
     </ClCompile>
   </ItemGroup>

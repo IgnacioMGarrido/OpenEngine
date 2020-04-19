@@ -1,18 +1,12 @@
 #pragma once
 #include <vector> 
 #include <../glm/ext.hpp>
+#include "Transform.h"
 
 class Vertex;
 class Shader;
 class Buffer;
 class Primitive;
-struct Transform
-{
-    glm::vec3 m_position;
-    glm::vec3 m_rotation;
-    glm::vec3 m_scale;
-};
-
 class Mesh
 {
 private:
@@ -23,7 +17,7 @@ private:
     Transform m_transform;
     glm::mat4 m_modelMatrix;
 public:
-    Mesh(Primitive& _primitive);
+    Mesh(Primitive& _primitive,const Transform& _transform = Transform());
 
     ~Mesh();
 
@@ -34,8 +28,17 @@ public:
     void scale(glm::vec3 _scale);
 
     void updateUniforms(Shader& _shader, glm::mat4 _projection, glm::mat4 _view);
+
     //Accessors
     inline glm::mat4& getModelMatrix() { return m_modelMatrix; };
+
+    inline glm::vec3 getPosition() const { return m_transform.getPosition(); };
+    inline glm::vec3 getRotation() const { return m_transform.getRotation(); };
+    inline glm::vec3 getScale() const { return m_transform.getScale(); };
+
+    inline void setPosition(glm::vec3 _position) { m_transform.setPosition(_position); };
+    inline void setRotation(glm::vec3 _rotation) { m_transform.setRotation(_rotation); };
+    inline void setScale(glm::vec3 _scale) { m_transform.setScale(_scale); };
 private:
-    void initModelMatrix();
+    void updateModelMatrix();
 };
