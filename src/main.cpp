@@ -9,6 +9,7 @@
 #include "../project/Buffer.h"
 #include <../glm/glm.hpp> 
 #include <../glm/ext.hpp>
+#include "Mesh.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -68,13 +69,25 @@ int main()
 
 	    std::vector<uint16_t> indices {0,1,2};
 
-	    Buffer* myBuffer = new Buffer(vertices, indices);
+		Mesh* myMesh = new Mesh(vertices, indices);
+	    //Buffer* myBuffer = new Buffer(vertices, indices);
 
 	    const glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 
 		    static_cast<float>(SCREEN_WIDTH) / static_cast<float>(SCREEN_HEIGHT),
 		    1, 1000);
 		const glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-		glm::mat4 model;
+
+		glm::vec3 position(0.f);
+		glm::vec3 rotation(0.f);
+		glm::vec3 scale(1.f);
+        glm::mat4 modelMatrix(1.f);
+		modelMatrix = glm::translate(modelMatrix, position);
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation.x), glm::vec3(1,0,0));
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation.y), glm::vec3(0,1,0));
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation.z), glm::vec3(0,0,1));
+		modelMatrix = glm::scale(modelMatrix, scale);
+
+
 
 
 	    // main loop
@@ -96,10 +109,10 @@ int main()
 			{
 		        for (int x = -3; x <= 3; x += 3) 
 		        {
-					model = glm::translate(glm::mat4(), glm::vec3(x, 0, z));
-					model = glm::rotate(model, glm::radians(32.f * accumulated), glm::vec3(0, 1, 0));
-					myShader->setMatrix(myShader->getLocation("mvp"), proj * view * model);
-					myBuffer->draw(*myShader);
+					modelMatrix = glm::translate(glm::mat4(), glm::vec3(x, 0, z));
+					modelMatrix = glm::rotate(modelMatrix, glm::radians(32.f * accumulated), glm::vec3(0, 1, 0));
+					myShader->setMatrix(myShader->getLocation("mvp"), proj * view * modelMatrix);
+					myMesh->draw(*myShader);
 				}
 		    }
 		    // refresh screen
