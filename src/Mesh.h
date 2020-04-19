@@ -29,6 +29,12 @@ public:
 
     void draw(const Shader& _shader) const;
 
+    void translate(glm::vec3 _position);
+    void rotate(float _degrees, glm::vec3 _axis);
+    void scale(glm::vec3 _scale);
+
+    //Accessors
+    inline glm::mat4& getModelMatrix() { return m_modelMatrix; };
 private:
     void initModelMatrix();
 };

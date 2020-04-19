@@ -77,17 +77,6 @@ int main()
 		    1, 1000);
 		const glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
-		glm::vec3 position(0.f);
-		glm::vec3 rotation(0.f);
-		glm::vec3 scale(1.f);
-        glm::mat4 modelMatrix(1.f);
-		modelMatrix = glm::translate(modelMatrix, position);
-		modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation.x), glm::vec3(1,0,0));
-		modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation.y), glm::vec3(0,1,0));
-		modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation.z), glm::vec3(0,0,1));
-		modelMatrix = glm::scale(modelMatrix, scale);
-
-
 
 
 	    // main loop
@@ -109,9 +98,9 @@ int main()
 			{
 		        for (int x = -3; x <= 3; x += 3) 
 		        {
-					modelMatrix = glm::translate(glm::mat4(), glm::vec3(x, 0, z));
-					modelMatrix = glm::rotate(modelMatrix, glm::radians(32.f * accumulated), glm::vec3(0, 1, 0));
-					myShader->setMatrix(myShader->getLocation("mvp"), proj * view * modelMatrix);
+					myMesh->translate(glm::vec3(x, 0, z));
+					myMesh->rotate(32.f * accumulated, glm::vec3(0, 1, 0));
+					myShader->setMatrix(myShader->getLocation("mvp"), proj * view * myMesh->getModelMatrix());
 					myMesh->draw(*myShader);
 				}
 		    }

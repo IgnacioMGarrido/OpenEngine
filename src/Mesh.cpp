@@ -25,6 +25,20 @@ void Mesh::draw(const Shader& _shader) const
     m_Buffer->draw(_shader);
 }
 
+void Mesh::translate(glm::vec3 _position)
+{
+    m_modelMatrix = glm::translate(glm::mat4(), _position);
+}
+
+void Mesh::rotate(float _degrees, glm::vec3 _axis)
+{
+    m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(_degrees), _axis);
+}
+
+void Mesh::scale(glm::vec3 _scale)
+{
+}
+
 void Mesh::initModelMatrix()
 {
     m_modelMatrix = glm::translate(m_modelMatrix, m_transform.m_position);
