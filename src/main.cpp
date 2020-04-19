@@ -73,7 +73,6 @@ int main()
 		Primitive t = Cube();
 		Transform myTransform = Transform();
 		Mesh* myMesh = new Mesh(t, myTransform);
-	    //Buffer* myBuffer = new Buffer(vertices, indices);
 
 	    const glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 
 		    static_cast<float>(SCREEN_WIDTH) / static_cast<float>(SCREEN_HEIGHT),
