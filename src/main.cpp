@@ -10,6 +10,7 @@
 #include <../glm/glm.hpp> 
 #include <../glm/ext.hpp>
 #include "Mesh.h"
+#include "Primitives.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -69,7 +70,8 @@ int main()
 
 	    std::vector<uint16_t> indices {0,1,2};
 
-		Mesh* myMesh = new Mesh(vertices, indices);
+		Primitive t = Triangle();
+		Mesh* myMesh = new Mesh(t);
 	    //Buffer* myBuffer = new Buffer(vertices, indices);
 
 	    const glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 
@@ -90,6 +92,7 @@ int main()
 
 		    static float accumulated = 0;
 		    accumulated += deltaTime;
+
 		    // get window size
 		    glfwGetWindowSize(win, &screenWidth, &screenHeight);
 
@@ -109,6 +112,8 @@ int main()
 		    glfwPollEvents();
 	    }
 
+		delete myMesh;
+		delete myShader;
 	    // shutdown
 	    glfwTerminate();
 	}

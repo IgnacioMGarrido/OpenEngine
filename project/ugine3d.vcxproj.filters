@@ -57,6 +57,9 @@
     <ClInclude Include="..\src\Mesh.h">
       <Filter>Header Files\Graphics\Mesh</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Primitives.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">

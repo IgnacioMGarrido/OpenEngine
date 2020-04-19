@@ -14,6 +14,7 @@ class Buffer
 
 public:
     Buffer(std::vector<Vertex>& _vertices, std::vector<uint16_t> _indices);
+    ~Buffer();
     void draw(const Shader& _shader) const;
 };
 

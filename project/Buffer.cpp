@@ -19,6 +19,11 @@ Buffer::Buffer(std::vector<Vertex> &_vertices, std::vector<uint16_t> _indices)
     m_numIndices = m_indices.size();
 }
 
+Buffer::~Buffer()
+{
+
+}
+
 void Buffer::draw(const Shader& _shader) const
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_ids[0]);

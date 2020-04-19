@@ -140,6 +140,7 @@
     <ClInclude Include="..\lib\glfw\glfw3.h" />
     <ClInclude Include="..\lib\glfw\glfw3native.h" />
     <ClInclude Include="..\src\Mesh.h" />
+    <ClInclude Include="..\src\Primitives.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Vertex.h" />

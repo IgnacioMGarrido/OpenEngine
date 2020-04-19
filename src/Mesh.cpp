@@ -1,13 +1,23 @@
 #include "Mesh.h"
 #include "../project/Buffer.h"
 #include "../project/Shader.h"
+#include "Primitives.h"
 #include "../project/Vertex.h"
 
-Mesh::Mesh(std::vector<Vertex>& _vertices, std::vector<uint16_t>& _indices)
-    : m_vertices(&_vertices)
-    , m_indices(&_indices)
-    , m_Buffer(new Buffer(*m_vertices, *m_indices))
+Mesh::Mesh(Primitive& _primitive)
 {
+
+    for (int i = 0; i < _primitive.getNrOfVertices(); ++i)
+    {
+        m_vertices.push_back(_primitive.getVertices()[i]);
+    }
+    for (int i = 0; i < _primitive.getNrOfIndices(); ++i)
+    {
+        m_indices.push_back(_primitive.getIndices()[i]);
+    }
+
+    m_Buffer = new Buffer(m_vertices, m_indices);
+
     m_transform.m_position = glm::vec3(0.f);
     m_transform.m_rotation = glm::vec3(0.f);
     m_transform.m_scale = glm::vec3(1.f);
@@ -16,9 +26,9 @@ Mesh::Mesh(std::vector<Vertex>& _vertices, std::vector<uint16_t>& _indices)
 
 Mesh::~Mesh()
 {
-    delete m_Buffer;
-    delete m_vertices;
-    delete m_indices;
+    //delete m_Buffer;
+    //delete m_indices;
+    //delete m_vertices;
 }
 
 void Mesh::draw(const Shader& _shader) const
