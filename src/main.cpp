@@ -10,7 +10,6 @@
 #include <iostream>
 #include "../project/Shader.h"
 #include "../project/Buffer.h"
-#include <../glm/glm.hpp> 
 #include <../glm/ext.hpp>
 #include "Mesh.h"
 #include "Primitives.h"

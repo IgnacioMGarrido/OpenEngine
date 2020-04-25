@@ -46,9 +46,9 @@ public:
 		Vertex vertices[] =
 		{
 			//Position								//Color							//Texcoords					//Normals
-			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f))//,		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
 		};
 		unsigned nrOfVertices = 3;//sizeof(vertices) / sizeof(Vertex);
 
@@ -71,10 +71,10 @@ public:
 		Vertex vertices[] =
 		{
 			//Position								//Color							//Texcoords					//Normals
-			Vertex(glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f)),
-			Vertex(glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f)),
-			Vertex(glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f)),
-			Vertex(glm::vec3(0.5f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f))//,		glm::vec3(0.f, 0.f, 1.f))
+			Vertex(glm::vec3(-0.5f, 0.5f, 0.f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f))
 		};
 		unsigned nrOfVertices = 4;
 
@@ -99,24 +99,24 @@ public:
 		{
 			//Position								//Color							//Texcoords					//Normals
 			//Triangle front
-			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f)),		//glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),	//	glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),		glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.5f, 1.f),	glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),	glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
 
 			//Triangle left
-			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),	glm::vec2(0.5f, 1.f)),//		glm::vec3(-1.f, 0.f, 0.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(-1.f, 0.f, 0.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(-1.f, 0.f, 0.f),
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),		glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f),	glm::vec3(-1.f, 0.f, 0.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f),		glm::vec3(-1.f, 0.f, 0.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(-1.f, 0.f, 0.f)),
 
 			//Triangle back
-			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f)),//		glm::vec3(0.f, 0.f, -1.f),
-			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, -1.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(0.f, 0.f, -1.f),
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),		glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f),	glm::vec3(0.f, 0.f, -1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, -1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, -1.f)),
 
 			//Triangles right
-			Vertex(glm::vec3(0.f, 0.5f, 0.f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f)),//		glm::vec3(1.f, 0.f, 0.f),
-			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(1.f, 0.f, 0.f),
-			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f))//,		glm::vec3(1.f, 0.f, 0.f)
+			Vertex(glm::vec3(0.f, 0.5f, 0.f),		glm::vec3(1.f, 1.f, 0.f),		glm::vec2(0.5f, 1.f),	glm::vec3(1.f, 0.f, 0.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(0.f, 0.f),		glm::vec3(1.f, 0.f, 0.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),	glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(1.f, 0.f, 0.f))
 		};
 		unsigned int nrOfVertices = 12;
 
@@ -133,15 +133,15 @@ public:
 		Vertex vertices[] =
 		{
 			//Position								//Color							//Texcoords					//Normals
-			Vertex(glm::vec3(-0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(0.5f, 0.5f, 0.5f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(-0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, 1.f)),
+			Vertex(glm::vec3(0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, 1.f)),
 																											   
-			Vertex(glm::vec3(0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f)),//		glm::vec3(0.f, 0.f, -1.f),
-			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, -1.f),
-			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(0.f, 0.f, -1.f),
-			Vertex(glm::vec3(-0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f))//,		glm::vec3(0.f, 0.f, -1.f)
+			Vertex(glm::vec3(0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f),		glm::vec3(0.f, 0.f, -1.f)),
+			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f),		glm::vec3(0.f, 0.f, -1.f)),
+			Vertex(glm::vec3(-0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f),		glm::vec3(0.f, 0.f, -1.f)),
+			Vertex(glm::vec3(-0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f),		glm::vec3(0.f, 0.f, -1.f))
 		};
 		unsigned nrOfVertices = 8;//sizeof(vertices) / sizeof(Vertex);
 
