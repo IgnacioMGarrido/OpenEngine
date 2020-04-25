@@ -136,7 +136,7 @@ public:
 			Vertex(glm::vec3(-0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f),
 			Vertex(glm::vec3(-0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f),
 			Vertex(glm::vec3(0.5f, -0.5f, 0.5f),			glm::vec3(0.f, 0.f, 1.f),		glm::vec2(1.f, 0.f)),//		glm::vec3(0.f, 0.f, 1.f),
-			Vertex(glm::vec3(0.5f, 0.5f, 0.5f),			glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f),
+			Vertex(glm::vec3(0.5f, 0.5f, 0.5f),				glm::vec3(1.f, 1.f, 0.f),		glm::vec2(1.f, 1.f)),//		glm::vec3(0.f, 0.f, 1.f),
 																											   
 			Vertex(glm::vec3(0.5f, 0.5f, -0.5f),			glm::vec3(1.f, 0.f, 0.f),		glm::vec2(0.f, 1.f)),//		glm::vec3(0.f, 0.f, -1.f),
 			Vertex(glm::vec3(0.5f, -0.5f, -0.5f),			glm::vec3(0.f, 1.f, 0.f),		glm::vec2(0.f, 0.f)),//		glm::vec3(0.f, 0.f, -1.f),
@@ -157,9 +157,15 @@ public:
 			4, 6, 7,
 
 			3, 2, 5,
-			3, 5, 4
+			3, 5, 4,
+
+			0, 7, 4,// top
+			0, 4, 3,
+
+			1, 6, 5,// bottom
+			1, 5, 2
 		};
-		unsigned int nrOfIndices = 24;//sizeof(indices) / sizeof(GLuint);
+		unsigned int nrOfIndices = 36;//sizeof(indices) / sizeof(GLuint);
 
 		this->set(vertices, nrOfVertices, indices, nrOfIndices);
 	}
