@@ -19,12 +19,19 @@ Buffer::Buffer(std::vector<Vertex> &_vertices, std::vector<uint16_t> _indices)
     m_numIndices = m_indices.size();
 }
 
-void Buffer::draw(const Shader& _shader) const
+Buffer::~Buffer()
+{
+
+}
+
+void Buffer::draw(std::shared_ptr<Shader> _shader) const
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_ids[0]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ids[1]);
 
-    _shader.setupAttributes();
-
-    glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_SHORT, nullptr);
+    _shader->setupAttributes();
+    if (m_indices.size() > 0)
+        glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_SHORT, nullptr);
+    else
+        glDrawArrays(GL_TRIANGLES, 0, m_vertices.size());
 }

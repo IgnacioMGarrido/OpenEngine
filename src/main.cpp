@@ -1,14 +1,20 @@
 #ifdef _MSC_VER
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #endif
+#define STB_IMAGE_IMPLEMENTATION
 
+
+#include "../lib/stb_image.h"
 #include "GL/glew.h"
 #include "../lib/glfw/glfw3.h"
 #include <iostream>
 #include "../project/Shader.h"
 #include "../project/Buffer.h"
-#include <../glm/glm.hpp> 
 #include <../glm/ext.hpp>
+#include "Mesh.h"
+#include "Primitives.h"
+#include "Texture.h"
+#include "Material.h"
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
@@ -56,26 +62,28 @@ int main()
 	    glEnable(GL_DEPTH_TEST);
 	    glEnable(GL_SCISSOR_TEST);
 
-	    
-	    //load Shaders
-	    Shader* myShader = new Shader("data/vertex.glsl", "data/fragment.glsl");
-	    myShader->use();
+		std::shared_ptr<Shader> myShader = std::make_shared<Shader>("data/vertex.glsl", "data/fragment.glsl");
 
-	    std::vector<Vertex> vertices;
-	    vertices.emplace_back(Vertex(glm::vec3(0, 0.5f, 0), glm::vec3(1, 0, 0)));
-	    vertices.emplace_back(Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec3(0, 1, 0)));
-	    vertices.emplace_back(Vertex(glm::vec3(0.5f, -0.5f, 0), glm::vec3(0, 0, 1)));
+		std::shared_ptr<Texture> mytexture = Texture::load("data/front.png");
+		std::shared_ptr<Texture> topTexture = Texture::load("data/top.png");
 
-	    std::vector<uint16_t> indices {0,1,2};
+		Material* myMaterial = new Material(mytexture, myShader);
+		Material* pTopMaterial = new Material(topTexture, myShader);
 
-	    Buffer* myBuffer = new Buffer(vertices, indices);
+        Primitive t = Cube();
+		Transform myTransform = Transform();
+		Mesh* myMesh = new Mesh(t, myTransform, myMaterial);
+
+		Primitive top = Quad();
+		Transform myTopTransform = Transform();
+		Mesh* pTopMesh = new Mesh(top, myTopTransform, pTopMaterial);
 
 	    const glm::mat4 proj = glm::perspective<float>(glm::radians(45.0f), 
 		    static_cast<float>(SCREEN_WIDTH) / static_cast<float>(SCREEN_HEIGHT),
 		    1, 1000);
-		const glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-		glm::mat4 model;
+		const glm::mat4 view = glm::lookAt(glm::vec3(0, 5, 6), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
+		//pTopMesh->setRotation(glm::vec3(90, 0, 0));
 
 	    // main loop
 	    while ( !glfwWindowShouldClose(win) && !glfwGetKey(win, GLFW_KEY_ESCAPE) )
@@ -88,25 +96,32 @@ int main()
 
 		    static float accumulated = 0;
 		    accumulated += deltaTime;
+
 		    // get window size
 		    glfwGetWindowSize(win, &screenWidth, &screenHeight);
 
 		    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			for (int z = 0; z >= -6; z -= 3)
-			{
-		        for (int x = -3; x <= 3; x += 3) 
-		        {
-					model = glm::translate(glm::mat4(), glm::vec3(x, 0, z));
-					model = glm::rotate(model, glm::radians(32.f * accumulated), glm::vec3(0, 1, 0));
-					myShader->setMatrix(myShader->getLocation("mvp"), proj * view * model);
-					myBuffer->draw(*myShader);
-				}
-		    }
-		    // refresh screen
+
+			myMesh->translate(glm::vec3(0, 0, 0));
+			//myMesh->rotate(32.f, glm::vec3(0, 1, 0));
+			myMesh->setRotation(glm::vec3(0, 32 * accumulated,0));
+			myMesh->updateUniforms(*myShader, proj, view);
+			myMesh->draw(myShader);
+
+			pTopMesh->translate(glm::vec3(0, 0.5001, 0));
+			pTopMesh->setRotation(glm::vec3(90, 0, 32 * -accumulated));
+			//pTopMesh->rotate(90, glm::vec3(1, 0, 0));
+			//pTopMesh->rotate(32.f, glm::vec3(0, 1, 0));
+
+			pTopMesh->updateUniforms(*myShader, proj, view);
+			pTopMesh->draw(myShader);
+
+	        // refresh screen
 		    glfwSwapBuffers(win);
 		    glfwPollEvents();
 	    }
 
+		delete myMesh;
 	    // shutdown
 	    glfwTerminate();
 	}

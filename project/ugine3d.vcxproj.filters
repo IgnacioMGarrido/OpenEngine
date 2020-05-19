@@ -28,6 +28,12 @@
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{4a9d55f6-e497-4eee-8a03-714d04481e37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\Mesh">
+      <UniqueIdentifier>{95f0d628-d805-4b74-af8b-d160bebb861d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\Mesh">
+      <UniqueIdentifier>{c865d729-0150-4cff-95ef-ba46c0a91a4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\glfw\glfw3.h">
@@ -48,6 +54,21 @@
     <ClInclude Include="Vertex.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Mesh.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Primitives.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Transform.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Texture.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Material.h">
+      <Filter>Header Files\Graphics\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -64,6 +85,18 @@
     </ClCompile>
     <ClCompile Include="Vertex.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Mesh.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Transform.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Texture.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Material.cpp">
+      <Filter>Source Files\Graphics\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
