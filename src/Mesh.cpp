@@ -37,20 +37,20 @@ void Mesh::draw(std::shared_ptr<Shader> _shader) const
 
 void Mesh::translate(glm::vec3 _position)
 {
-    //m_modelMatrix = glm::translate(glm::mat4(), _position);
+   // m_modelMatrix = glm::translate(m_modelMatrix, _position);
     m_transform.setPosition(_position);
 }
 
 void Mesh::rotate(float _degrees, glm::vec3 _axis)
 {
-    //m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(_degrees), _axis);
-    m_transform.setRotation((_degrees * _axis));
+   // m_modelMatrix = glm::rotate(m_modelMatrix, glm::radians(_degrees), _axis);
+    m_transform.setRotation(_degrees * _axis);
 }
 
 void Mesh::scale(glm::vec3 _scale)
 {
     m_transform.setScale(m_transform.getScale() + _scale);
-    //m_modelMatrix = glm::scale(m_modelMatrix, _scale);
+   // m_modelMatrix = glm::scale(m_modelMatrix, _scale);
 }
 
 void Mesh::updateModelMatrix()
